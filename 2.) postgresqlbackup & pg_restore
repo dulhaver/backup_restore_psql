@@ -2,15 +2,25 @@
 
 ##############################################################################
 
+
+#### back up ####
 sudo autopostgresqlbackup
 
+
+
+#### restore ####
+
+# unziping the backup file
+sudo gunzip /var/lib/autopostgresqlbackup/daily/[db_name]/[dumpname].sql.gz
+
+# change ownership of the unziped backup file
 sudo chown db_owner:db_owner /var/lib/autopostgresqlbackup/daily/[db_name]/*
 
+# become the db_owner (odoo)
 sudo su - [db_owner]
 
+# create a new empty database
 createdb [new_db]
 
+# restore the unziped dump file in the new empty database
 pg_restore -d [new_db] /var/lib//var/lib/autopostgresqlbackup/daily/[db_name]/[latest]
-
-
-### not tested yet
