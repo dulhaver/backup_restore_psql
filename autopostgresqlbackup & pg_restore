@@ -1,0 +1,16 @@
+/etc/default/autopostgresqlbackup
+
+##############################################################################
+
+sudo autopostgresqlbackup
+
+sudo chown db_owner:db_owner /var/lib/autopostgresqlbackup/daily/[db_name]/*
+
+sudo su - [db_owner]
+
+createdb [new_db]
+
+pg_restore -d [new_db] /var/lib//var/lib/autopostgresqlbackup/daily/[db_name]/[latest]
+
+
+### not tested yet
