@@ -7,5 +7,4 @@ createdb [new_db]
 pg_restore -d [new_db] /path/to/backup/[dump_name].sql
 
 
-### not tested yet how system behaves when using .sql.gzip (instead of .sql)
-### I assume it should be working just the same
+### if you use compressed dump files (.sql.gz), you need to gunzip them before pg_restore
