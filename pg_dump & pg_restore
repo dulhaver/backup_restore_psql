@@ -1,10 +1,11 @@
-# backup_restore_psql
-notes for backing up and restoriung PostgreSQL database - stubb
-
 sudo su - [db_owner]
+
 pg_dump -Fc [db_name] > /path/to/backup/[dump_name].sql
+
 createdb [new_db]
+
 pg_restore -d [new_db] /path/to/backup/[dump_name].sql
 
-### not tested yet how system behaves when using .gzip
+
+### not tested yet how system behaves when using .sql.gzip (instead of .sql)
 ### I assume it should be working just the same
